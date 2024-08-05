@@ -1,6 +1,6 @@
 {
     "name": "dynamic-table-react",
-    "version": "1.0.0-alpha-0.1.1",
+    "version": "1.0.0-alpha-0.2.0",
     "main": "src/DynamicTable.jsx",
     "scripts": {
         "dev": "vite",
@@ -10,6 +10,8 @@
     "dependencies": {
         "@emotion/react": "^11.7.1",
         "@emotion/styled": "^11.7.1",
+        "@mui/icons-material": "^5.16.6",
+        "@mui/lab": "^5.0.0-alpha.173",
         "@mui/material": "^5.2.7",
         "react": "^17.0.2",
         "react-dom": "^17.0.2"
