@@ -1,4 +1,4 @@
-import {DynamicTable} from './DynamicTable';
+import { DynamicTable } from './DynamicTable';
 
 const columns = [
     { field: 'id', headerName: 'ID' },
@@ -25,11 +25,26 @@ const options = {
     toggleColumnVisibility: true,
 };
 
+const tools = [
+    {
+        name: 'Approve',
+        action: (selectedRows) => alert(`Approved ${selectedRows.map(row => row.name).join(', ')}`),
+    },
+    {
+        name: 'View Attachments',
+        action: (selectedRows) => alert(`Viewing attachments for ${selectedRows.map(row => row.name).join(', ')}`),
+    },
+    {
+        name: 'Copy',
+        action: (selectedRows) => alert(`Copied ${selectedRows.map(row => row.name).join(', ')}`),
+    },
+];
+
 const App = () => {
     return (
         <div>
             <h1>Dynamic Table</h1>
-            <DynamicTable columns={columns} data={data} options={options} />
+            <DynamicTable columns={columns} data={data} options={options} tools={tools} />
         </div>
     );
 };

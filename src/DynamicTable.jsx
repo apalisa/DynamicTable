@@ -1,15 +1,16 @@
 import React, { useState, useMemo } from 'react';
 import {
-  Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TableSortLabel,
-  TablePagination, Checkbox
+    Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TableSortLabel,
+    TablePagination, Checkbox, Button, Toolbar, Typography
 } from '@mui/material';
 
-export const DynamicTable = ({ columns, data, options }) => {
+export const DynamicTable = ({ columns, data, options, tools }) => {
     const [order, setOrder] = useState(options?.initialOrder || 'asc');
     const [orderBy, setOrderBy] = useState(options?.initialOrderBy || columns[0].field);
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(options?.rowsPerPage || 5);
     const [hiddenColumns, setHiddenColumns] = useState(options?.hiddenColumns || []);
+    const [selected, setSelected] = useState([]);
 
     const handleRequestSort = (property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -28,10 +29,19 @@ export const DynamicTable = ({ columns, data, options }) => {
 
     const handleToggleColumn = (field) => {
         setHiddenColumns((prevHiddenColumns) =>
-        prevHiddenColumns.includes(field)
-            ? prevHiddenColumns.filter((col) => col !== field)
-            : [...prevHiddenColumns, field]
+            prevHiddenColumns.includes(field)
+                ? prevHiddenColumns.filter((col) => col !== field)
+                : [...prevHiddenColumns, field]
         );
+    };
+
+    const handleSelectRow = (row) => {
+        setSelected((prevSelected) => {
+            if (prevSelected.includes(row)) {
+                return prevSelected.filter((r) => r !== row);
+            }
+            return [...prevSelected, row];
+        });
     };
 
     const sortedData = useMemo(() => {
@@ -52,10 +62,37 @@ export const DynamicTable = ({ columns, data, options }) => {
 
     return (
         <>
+            <Toolbar>
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    Selected Rows: {selected.length}
+                </Typography>
+                {tools.map((tool, toolIndex) => (
+                    <Button
+                        key={toolIndex}
+                        onClick={() => tool.action(selected)}
+                        disabled={selected.length === 0}
+                    >
+                        {tool.name}
+                    </Button>
+                ))}
+            </Toolbar>
             <TableContainer component={Paper}>
                 <Table>
                     <TableHead>
                         <TableRow>
+                            <TableCell padding="checkbox">
+                                <Checkbox
+                                    indeterminate={selected.length > 0 && selected.length < data.length}
+                                    checked={data.length > 0 && selected.length === data.length}
+                                    onChange={(event) => {
+                                        if (event.target.checked) {
+                                            setSelected(data);
+                                        } else {
+                                            setSelected([]);
+                                        }
+                                    }}
+                                />
+                            </TableCell>
                             {columns.map((column) => (
                                 !hiddenColumns.includes(column.field) && (
                                     <TableCell
@@ -85,7 +122,14 @@ export const DynamicTable = ({ columns, data, options }) => {
                     </TableHead>
                     <TableBody>
                         {paginatedData.map((row, index) => (
-                            <TableRow key={index}>
+                            <TableRow
+                                key={index}
+                                selected={selected.includes(row)}
+                                onClick={() => handleSelectRow(row)}
+                            >
+                                <TableCell padding="checkbox">
+                                    <Checkbox checked={selected.includes(row)} />
+                                </TableCell>
                                 {columns.map((column) =>
                                     !hiddenColumns.includes(column.field) && (
                                         <TableCell key={column.field}>{row[column.field]}</TableCell>
