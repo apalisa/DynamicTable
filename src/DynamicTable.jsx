@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import {
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TableSortLabel,
-  TablePagination, FormControlLabel, Checkbox
+  TablePagination, Checkbox
 } from '@mui/material';
 
 export const DynamicTable = ({ columns, data, options }) => {
@@ -35,7 +35,7 @@ export const DynamicTable = ({ columns, data, options }) => {
     };
 
     const sortedData = useMemo(() => {
-        return data.sort((a, b) => {
+        return data.slice().sort((a, b) => {
             if (a[orderBy] < b[orderBy]) {
                 return order === 'asc' ? -1 : 1;
             }

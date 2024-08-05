@@ -1,4 +1,4 @@
-import DynamicTable from './DynamicTable';
+import {DynamicTable} from './DynamicTable';
 
 const columns = [
     { field: 'id', headerName: 'ID' },
