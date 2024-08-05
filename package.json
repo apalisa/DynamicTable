@@ -1,6 +1,15 @@
 {
     "name": "dynamic-table-react",
-    "version": "1.0.0-alpha-0.2.2",
+    "version": "1.0.0-alpha-0.2.3",
+    "description": "A dynamic table for ReactJS",
+    "main": "DynamicTable.jsx",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/apalisa/DynamicTable"
+    },
+    "keywords": ["dynamic", "dynamic table", "table", "react table", "MUI table", "MaterialUI Table", "tabla dinamica", "dinamica"],
+    "author": "Agustin 'Hater7' Palisa",
+    "license": "MIT",
     "type": "module",
     "scripts": {
         "dev": "vite",
