@@ -1,4 +1,4 @@
-import {DynamicTable} from './DynamicTable';
+import { DynamicTable } from './DynamicTable';
 
 const columns = [
     { field: 'id', headerName: 'ID' },
@@ -28,15 +28,15 @@ const options = {
 const tools = [
     {
         name: 'Approve',
-        action: (row) => alert(`Approved ${row.name}`),
+        action: (selectedRows) => alert(`Approved ${selectedRows.map(row => row.name).join(', ')}`),
     },
     {
         name: 'View Attachments',
-        action: (row) => alert(`Viewing attachments for ${row.name}`),
+        action: (selectedRows) => alert(`Viewing attachments for ${selectedRows.map(row => row.name).join(', ')}`),
     },
     {
         name: 'Copy',
-        action: (row) => alert(`Copied ${row.name}`),
+        action: (selectedRows) => alert(`Copied ${selectedRows.map(row => row.name).join(', ')}`),
     },
 ];
 
