@@ -25,11 +25,26 @@ const options = {
     toggleColumnVisibility: true,
 };
 
+const tools = [
+    {
+        name: 'Approve',
+        action: (row) => alert(`Approved ${row.name}`),
+    },
+    {
+        name: 'View Attachments',
+        action: (row) => alert(`Viewing attachments for ${row.name}`),
+    },
+    {
+        name: 'Copy',
+        action: (row) => alert(`Copied ${row.name}`),
+    },
+];
+
 const App = () => {
     return (
         <div>
             <h1>Dynamic Table</h1>
-            <DynamicTable columns={columns} data={data} options={options} />
+            <DynamicTable columns={columns} data={data} options={options} tools={tools} />
         </div>
     );
 };

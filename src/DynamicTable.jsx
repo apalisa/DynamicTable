@@ -1,10 +1,10 @@
 import React, { useState, useMemo } from 'react';
 import {
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TableSortLabel,
-  TablePagination, Checkbox
+  TablePagination, Checkbox, Button
 } from '@mui/material';
 
-export const DynamicTable = ({ columns, data, options }) => {
+export const DynamicTable = ({ columns, data, options, tools }) => {
     const [order, setOrder] = useState(options?.initialOrder || 'asc');
     const [orderBy, setOrderBy] = useState(options?.initialOrderBy || columns[0].field);
     const [page, setPage] = useState(0);
@@ -81,6 +81,9 @@ export const DynamicTable = ({ columns, data, options }) => {
                                     </TableCell>
                                 )
                             ))}
+                            <TableCell>
+                                Tools
+                            </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -91,6 +94,16 @@ export const DynamicTable = ({ columns, data, options }) => {
                                         <TableCell key={column.field}>{row[column.field]}</TableCell>
                                     )
                                 )}
+                                <TableCell>
+                                    {tools.map((tool, toolIndex) => (
+                                        <Button
+                                            key={toolIndex}
+                                            onClick={() => tool.action(row)}
+                                        >
+                                            {tool.name}
+                                        </Button>
+                                    ))}
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
