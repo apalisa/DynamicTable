@@ -1,6 +1,6 @@
 // src/App.jsx
 import React from 'react';
-import DynamicTable from './DynamicTable';
+import { DynamicTable } from './DynamicTable';
 
 const columns = [
     { field: 'id', headerName: 'ID' },
