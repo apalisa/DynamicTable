@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import {
     Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TableSortLabel,
-    TablePagination, Checkbox, IconButton, Toolbar, Typography, Tooltip
+    TablePagination, Checkbox, IconButton, Toolbar, Typography, Tooltip, MenuItem, Select
 } from '@mui/material';
 
 export const DynamicTable = ({ columns, data, options, tools }) => {
@@ -73,6 +73,24 @@ export const DynamicTable = ({ columns, data, options, tools }) => {
                         </IconButton>
                     </Tooltip>
                 ))}
+                {options?.userCanToggleColumns && (
+                    <Select
+                        value=""
+                        displayEmpty
+                        onChange={(event) => handleToggleColumn(event.target.value)}
+                        renderValue={() => 'Toggle Columns'}
+                        style={{ marginLeft: 'auto' }}
+                    >
+                        {columns.map((column) => (
+                            <MenuItem key={column.field} value={column.field}>
+                                <Checkbox
+                                    checked={!hiddenColumns.includes(column.field)}
+                                />
+                                {column.headerName}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                )}
             </Toolbar>
             <TableContainer component={Paper}>
                 <Table>
@@ -107,12 +125,6 @@ export const DynamicTable = ({ columns, data, options, tools }) => {
                                             </TableSortLabel>
                                         )}
                                         {!options?.sortable && column.headerName}
-                                        {options?.toggleColumnVisibility && (
-                                            <Checkbox
-                                                checked={!hiddenColumns.includes(column.field)}
-                                                onChange={() => handleToggleColumn(column.field)}
-                                            />
-                                        )}
                                     </TableCell>
                                 )
                             ))}
