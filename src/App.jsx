@@ -1,4 +1,5 @@
 import { DynamicTable } from './DynamicTable';
+import { Check, AttachFile, FileCopy } from '@mui/icons-material';
 
 const columns = [
     { field: 'id', headerName: 'ID' },
@@ -28,14 +29,20 @@ const options = {
 const tools = [
     {
         name: 'Approve',
+        icon: <Check />,
+        tooltip: 'Approve selected rows',
         action: (selectedRows) => alert(`Approved ${selectedRows.map(row => row.name).join(', ')}`),
     },
     {
         name: 'View Attachments',
+        icon: <AttachFile />,
+        tooltip: 'View attachments for selected rows',
         action: (selectedRows) => alert(`Viewing attachments for ${selectedRows.map(row => row.name).join(', ')}`),
     },
     {
         name: 'Copy',
+        icon: <FileCopy />,
+        tooltip: 'Copy selected rows',
         action: (selectedRows) => alert(`Copied ${selectedRows.map(row => row.name).join(', ')}`),
     },
 ];
