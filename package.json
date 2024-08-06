@@ -1,8 +1,9 @@
 {
     "name": "dynamic-table-react",
-    "version": "1.0.0-alpha-0.2.6",
+    "version": "1.0.0-alpha",
     "description": "A dynamic table for ReactJS",
-    "main": "DynamicTable.jsx",
+    "main": "dist/index.js",
+    "module": "dist/index.esm.js",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/apalisa/DynamicTable"
@@ -13,9 +14,10 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
+        "build": "rollup -c",
         "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "prepublishOnly": "npm run build"
     },
     "dependencies": {
         "@emotion/react": "^11.13.0",
@@ -36,6 +38,15 @@
         "eslint-plugin-react": "^7.34.3",
         "eslint-plugin-react-hooks": "^4.6.2",
         "eslint-plugin-react-refresh": "^0.4.7",
-        "vite": "^5.3.4"
+        "vite": "^5.3.4",
+        "rollup": "^3.14.0",
+        "rollup-plugin-peer-deps-external": "^2.2.4",
+        "rollup-plugin-terser": "^7.0.2",
+        "rollup-plugin-typescript2": "^0.31.2"
+    },
+    "peerDependencies": {
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1"
     }
 }
+  
