@@ -1,6 +1,6 @@
 import { DynamicTable } from './DynamicTable';
 import { Check, AttachFile, FileCopy } from '@mui/icons-material';
-import { approve, viewAttachments, copy } from '../actions';
+import { approve, viewAttachments, copy } from '../actions/';
 
 const columns = [
     { field: 'id', headerName: 'ID' },
@@ -25,6 +25,7 @@ const options = {
     sortable: true,
     pagination: true,
     toggleColumnVisibility: true,
+    userCanToggleColumns: true, // Permite al usuario ocultar/mostrar columnas
 };
 
 const tools = [
