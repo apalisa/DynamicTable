@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import {
     Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TableSortLabel,
-    TablePagination, Checkbox, Button, Toolbar, Typography
+    TablePagination, Checkbox, IconButton, Toolbar, Typography, Tooltip
 } from '@mui/material';
 
 export const DynamicTable = ({ columns, data, options, tools }) => {
@@ -66,14 +66,12 @@ export const DynamicTable = ({ columns, data, options, tools }) => {
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     Selected Rows: {selected.length}
                 </Typography>
-                {tools.map((tool, toolIndex) => (
-                    <Button
-                        key={toolIndex}
-                        onClick={() => tool.action(selected)}
-                        disabled={selected.length === 0}
-                    >
-                        {tool.name}
-                    </Button>
+                {selected.length > 0 && tools.map((tool, toolIndex) => (
+                    <Tooltip title={tool.tooltip} key={toolIndex}>
+                        <IconButton onClick={() => tool.action(selected)}>
+                            {tool.icon}
+                        </IconButton>
+                    </Tooltip>
                 ))}
             </Toolbar>
             <TableContainer component={Paper}>
