@@ -1,47 +1,48 @@
 {
     "name": "dynamic-table-react",
-    "version": "1.0.0-alpha",
+    "version": "1.0.1-alpha",
     "description": "A dynamic table for ReactJS",
-    "main": "dist/index.js",
-    "module": "dist/index.esm.js",
+    "main": "dist/dynamic-table-react.umd.js",  
+    "module": "dist/dynamic-table-react.es.js", 
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/apalisa/DynamicTable"
+      "type": "git",
+      "url": "git+https://github.com/apalisa/DynamicTable"
     },
     "keywords": ["dynamic", "dynamic table", "table", "react table", "MUI table", "MaterialUI Table", "tabla dinamica", "dinamica"],
     "author": "Agustin 'Hater7' Palisa",
     "license": "MIT",
     "type": "module",
     "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-        "preview": "vite preview",
-        "prepublishOnly": "npm run build"
+      "dev": "vite",
+      "build": "vite build",
+      "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+      "preview": "vite preview",
+      "prepublishOnly": "npm run build"
     },
     "dependencies": {
-        "@emotion/react": "^11.13.0",
-        "@emotion/styled": "^11.13.0",
-        "@mui/icons-material": "^5.16.6",
-        "@mui/lab": "^5.0.0-alpha.173",
-        "@mui/material": "^5.16.6",
-        "exceljs": "^4.4.0",
-        "json2csv": "^6.0.0-alpha.2",
-        "react": "^18.3.1",
-        "react-dom": "^18.3.1"
+      "@emotion/react": "^11.13.0",
+      "@emotion/styled": "^11.13.0",
+      "@mui/icons-material": "^5.16.6",
+      "@mui/lab": "^5.0.0-alpha.173",
+      "@mui/material": "^5.16.6",
+      "exceljs": "^4.4.0",
+      "json2csv": "^6.0.0-alpha.2",
+      "react": "^18.3.1",
+      "react-dom": "^18.3.1"
     },
     "devDependencies": {
-        "@types/react": "^18.3.3",
-        "@types/react-dom": "^18.3.0",
-        "@vitejs/plugin-react": "^4.3.1",
-        "eslint": "^8.57.0",
-        "eslint-plugin-react": "^7.34.3",
-        "eslint-plugin-react-hooks": "^4.6.2",
-        "eslint-plugin-react-refresh": "^0.4.7",
-        "vite": "^5.3.4"
+      "@types/react": "^18.3.3",
+      "@types/react-dom": "^18.3.0",
+      "@vitejs/plugin-react": "^4.3.1",
+      "eslint": "^8.57.0",
+      "eslint-plugin-react": "^7.34.3",
+      "eslint-plugin-react-hooks": "^4.6.2",
+      "eslint-plugin-react-refresh": "^0.4.7",
+      "vite": "^5.3.4"
     },
     "peerDependencies": {
-        "react": "^18.3.1",
-        "react-dom": "^18.3.1"
+      "react": "^18.3.1",
+      "react-dom": "^18.3.1"
     }
-}
+  }
+  
