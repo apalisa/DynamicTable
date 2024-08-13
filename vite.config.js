@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   build: {
@@ -11,8 +10,6 @@ export default defineConfig({
       fileName: (format) => `dynamic-table-react.${format}.js`,
     },
     rollupOptions: {
-      // Make sure to externalize dependencies that shouldn't be bundled
-      // into your library.
       external: ['react', 'react-dom'],
       output: {
         globals: {
